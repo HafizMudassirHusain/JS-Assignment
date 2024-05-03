@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-image: url('./image/WhatsApp\ Image\ 2024-05-01\ at\ 02.59.50.jpeg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  margin: 0;
+}
+.calculator {
+  width: 40%;
+  border: 2px solid #217806;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  background-color: #ffffff42;
+}
+
+.display {
+  display: block;
+  width: 90%;
+  padding: 10px;
+  color: white;
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 10px;
+  background-color: transparent;
+border: 2px solid rgb(15, 162, 176);
+border-radius: 20%;
+box-shadow: 10px 10px 15px  rgba(80, 210, 227, 0.728);
+}
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+}
+button {
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.5s;
+  border-radius: 40% ;
+}  
+        button:hover {
+            background:linear-gradient(90deg,rgba(244, 244, 241, 0.675),rgb(23, 222, 23,0));
+            box-shadow: 5px 5px 7px rgba(255, 255,  255, 0.728) ;
+    
+        }
+        button:focus {
+            outline: none;
+        }
+        @media only screen and (max-width: 600px) {
+  .calculator {
+    width: 80%;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1 style="color: white;margin: 20px auto;text-shadow: 5px 5px 10px rgb(4, 125, 107);">Calculator Web App</h1>
+    <input type="text" class="display" id="display" readonly>
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('*')">*</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendToDisplay('/')">/</button>
+      <button onclick="backspace()">Bkspce</button>
+      <button onclick="appendToDisplay('(')">(</button>
+      <button onclick="appendToDisplay(')')">)</button>
+      <button onclick="toggleSign()">+/-</button>
+      <button onclick="calculateSquareRoot()">√</button>
+      <button onclick="clearAll()">AC</button>
+      <button onclick="calculatePercentage()">%</button>
+    </div>
+  </div>
+  <script>
+function clearDisplay() {
+  document.getElementById('display').value = '';
+}
+function appendToDisplay(value) {
+  document.getElementById('display').value += value;
+}
+function calculate() {
+  try {
+    const result = eval(document.getElementById('display').value);
+    document.getElementById('display').value = result;
+  } catch (error) {
+    document.getElementById('display').value = 'Error';
+  }
+}
+function backspace() {
+  let displayValue = document.getElementById('display').value;
+  document.getElementById('display').value = displayValue.slice(0, -1);
+}
+
+function toggleSign() {
+  let displayValue = document.getElementById('display').value;
+  if (displayValue.startsWith('-')) {
+    document.getElementById('display').value = displayValue.substring(1);
+  } else {
+    document.getElementById('display').value = '-' + displayValue;
+  }
+}
+function calculateSquareRoot() {
+  let displayValue = document.getElementById('display').value;
+  try {
+    const result = Math.sqrt(eval(displayValue));
+    document.getElementById('display').value = result;
+  } catch (error) {
+    document.getElementById('display').value = 'Error';
+  }
+}
+
+function clearAll() {
+  document.getElementById('display').value = '';
+}
+
+function calculatePercentage() {
+  let displayValue = document.getElementById('display').value;
+  try {
+    const result = eval(displayValue) / 100;
+    document.getElementById('display').value = result;
+  } catch (error) {
+    document.getElementById('display').value = 'Error';
+  }
+}
+
+// function calc(b){
+// var a = document.getElementById('abc')
+// a.value += b
+// }
+
+// function result(){
+//     var h = document.getElementById('abc')
+//      h.value = eval(h.value)
+// }
+// function clr(){
+//     var r = document.getElementById('abc')
+//     r.value = ''
+// }
+
+  </script>
+</body>
+</html>
