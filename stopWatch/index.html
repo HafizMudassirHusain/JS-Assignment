@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(90deg,#0f67fb, #1186bd);
+          
+             }
+        .stopwatch{
+            width: 60%;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.642);
+            border-radius: 5%;
+            /* margin-top: 10vh; */
+            padding: 10px 30px;
+        }
+       body > h1{
+            width: 60%;
+            margin: auto;
+            text-align: center;
+            font-size: 3em;
+            color: white;
+            margin-top: 20vh;
+        }
+        #head{
+            margin: 20px auto;
+            width: 95%;
+            height: 15vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 20px;
+            box-shadow: #1186bd 0 0 20px;
+        }
+        #head h1{
+            width: 20%;
+            text-align: center;
+            border: none;
+            color:#0f67fb;
+            border-radius: 10px;
+        }
+        span{
+            font-weight: bolder;
+            color:#0f67fb;
+            font-size: 2em;
+        }
+        #btns{
+            margin: auto;
+            width: 95%;
+            height: 15vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 20px;
+        }
+        #btns button{
+            width: 20%;
+            height: 30px;
+            border: none;
+            color: white;
+            border-radius: 10px;
+        }
+        #btns button:nth-child(1){
+            background: linear-gradient(90deg,red,rgb(167, 66, 66));
+        }
+        #btns button:nth-child(2){
+            background: linear-gradient(90deg,#0f67fb,rgb(62, 119, 157));
+        }
+        #btns button:nth-child(3){
+            background: linear-gradient(90deg,rgba(32, 205, 32, 0.961),rgb(25, 156, 77));
+        }
+        @media only screen and (max-width: 500px){
+            body > h1{
+             font-weight: 2em;
+            }
+            .stopwatch{
+                height: 30vh;
+                width: 90%;
+            }
+            #head{
+                width: 100%;
+            }
+            #head h1{
+                width: 40%;
+            }
+            span{
+                font-size: 1.5em;
+            }
+            #btns{
+            height: 10vh;
+            }
+            #btns button{
+            width: 30%;
+            }
+        }
+        @media only screen and (max-width: 400px){
+        body > h1{
+            font-size: 2em;
+        }
+        }
+    </style>
+</head>
+<body>
+    <h1>StopWatch App</h1>
+    <div class="stopwatch">
+        <div id="head">
+            <h1 id="min">00</h1><span>: :</span>
+            <h1 id="sec">00</h1><span>: :</span>
+            <h1 id="msec">00</h1>
+        </div>
+        <div id="btns">
+            <button id="start" onclick="start()">Start</button>
+            <button id="stop" onclick="stop()">Stop</button>
+            <button id="reset" onclick="reset()">Reset</button>
+        </div>
+
+    </div>
+
+<script>
+    var msec = 0
+   var sec = 0
+   var min = 0
+   var getmsec = document.getElementById('msec');
+   var getsec = document.getElementById('sec');
+   var getmin = document.getElementById('min');
+   var interval;
+
+  function start(){
+   interval = setInterval(function(){
+    msec++;
+    getmsec.innerHTML = msec
+    if (msec >= 100){
+        sec++
+        getsec.innerHTML = sec
+        msec = 0 
+    } 
+    else if(sec >= 60){
+        min++ 
+    getmin.innerHTML = min
+    sec = 0;
+    }
+   },10)
+   document.getElementById('start').disabled = true;
+   document.getElementById('msec').style.color = "red";
+   document.getElementById('sec').style.color = "red";
+   document.getElementById('min').style.color = "red";
+  }
+
+  function stop(){
+    clearInterval(interval)
+    document.getElementById('start').disabled = false;
+    document.getElementById('msec').style.color = "#0f67fb";
+   document.getElementById('sec').style.color = "#0f67fb";
+   document.getElementById('min').style.color = "#0f67fb";
+  }
+
+   function reset(){
+     min = "00";
+     sec = "00";
+     msec = "00";
+     getmin.innerHTML =  min;
+     getsec.innerHTML = sec;
+    getmsec.innerHTML = msec;
+    document.getElementById('msec').style.color = "green";
+   document.getElementById('sec').style.color = "green";
+   document.getElementById('min').style.color = "green";
+   }
+
+</script>
+</body>
+</html>

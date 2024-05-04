@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="para">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas iste voluptates aspernatur optio ma
+        iores, dignissimos animi ratione quae ullam temporibus minima dolore accusantium 
+        maxime nulla explicabo pariatur voluptatum, architecto aperiam. Lorem ipsum dolor 
+        sit, amet consectetur adipisicing elit. Repellat est odio ea fuga. Sapiente animi 
+        eveniet cumque dicta culpa distinctio impedit expedita temporibus tenetur modi porro 
+        id et, optio possimus quas vero quasi unde incidunt sit in quo qui? Fuga, aspernatur!
+    </p>
+<a id="anc" onclick="showMore()" href="#">Read More...</a>
+   
+   <script>   
+var para = document.getElementById('para');
+var remainingText = para.innerText.slice(50)
+para.innerText = para.innerText.slice(0 , 50);
+function showMore(){
+    para.innerText = para.innerText+remainingText;
+    document.getElementById('anc').innerHTML=""
+}
+</script>
+
+</body>
+</html>
