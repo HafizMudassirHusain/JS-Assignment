@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            font-family: 'Arial', sans-serif;
+        }
+        h1{
+          color: #fff;
+          font-size: 50px;
+            width: 70%;
+            height: 100px;
+            margin: auto;
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        div {
+            margin: auto;
+            width: 400px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            border-radius: 20px;
+            color: #ffffff;
+            background: rgba(0, 0, 0, 0.5);
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            transition: transform 0.5s, box-shadow 0.5s;
+        }
+
+        div:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 0px 70px rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>Digital Clock</h1>
+    <div id="div"></div>
+
+    <script>
+        function update() {
+            var date = new Date();
+            var hours = String(date.getHours()).padStart(2, '0');
+            var minutes = String(date.getMinutes()).padStart(2, '0');
+            var seconds = String(date.getSeconds()).padStart(2, '0');
+            var time = `${hours}:${minutes}:${seconds}`;
+            var div = document.getElementById('div');
+            div.innerText = time;
+        }
+        update();
+        setInterval(update, 1000);
+    </script>
+</body>
+</html>
