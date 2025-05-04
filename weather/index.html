@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="weather">
+    <h2>Weather</h2>
+    <input type="text" name="City" placeholder="Enter City Name" id="search">
+    <div id="showweather">
+
+    </div>
+</div>
+    <script>
+        var inp = document.getElementById('search').value
+fetch('https://api.openweathermap.org/data/2.5/weather?q=karachi&units=matric&appid=ea0a55ef40e46f250d973be66e7d95e2')
+.then(function(data){
+    return data.json()
+})
+.then(function(data){
+    console.log(data)
+    document.getElementById('showweather').innerHTML = `
+    <p>City: ${data.name}</p>
+    <p>Temperature: ${data.main.temp}°C</p>
+    <p>Humidity: ${data.main.humidity}%</p>
+    `
+})
+.catch(function(error){
+    console.log(error)
+})
+
+    </script>
+    
+</body>
+</html>

@@ -6,7 +6,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
     .then(function (data){
     var getDiv = document.querySelector('#getdiv')
     console.log(data)
-    data.filter(function (data){
+    data.map(function (data){
         getDiv.innerHTML += `<div class="card m-10" style="width: 18rem;">
            <div class="card-body">
              <h5 class="card-title">${data.id}</h5>

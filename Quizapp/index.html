@@ -4,29 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div style="margin: auto;width: 60%;height: 100vh;font-size: xx-large; background:rgb(226, 152, 25);color:aliceblue;text-align: center;">
-        <h1>Quiz App</h1>
-        <p id="questions">
-
-        </p>
-
-        <input type="radio" onclick="clicked()" value="1" name="option" id="">
-        <label for="" id="opt1"></label>
-        <br>
-
-        <input type="radio" onclick="clicked()" value="2" name="option" id="">
-        <label for="" id="opt2"></label>
-        <br>
-
-        <input type="radio" onclick="clicked()" value="3" name="option" id="">
-        <label for="" id="opt3"></label>
-        <br>
-
-        <button onclick="next()" id="btnNext" disabled>Next</button>
+ <nav class="navbar">
+    <div class="logo">
+        <a href="#">QuizApp</a>
     </div>
+    <div class="combine">
+    <div class="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>             
+    </div>
+    </div> 
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Quizzes</a></li>
+        <li><a href="#">Leaderboard</a></li>
+        <li class="profile">
+            <a href="#">Profile</a>
+            <ul class="dropdown">
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </li>
+        <li><a href="#">About</a></li>
+    </ul>
+</nav>
 
+
+
+<div>
+        <h1 class="quizHeading">Quiz App</h1> 
+        <h5 id="timer"></h5>
+
+        <div class="parent-container">
+          <div class="child">
+            <p id="questions">
+
+            </p>
+    
+          </div>
+          <div class="radio-input">
+            <label class="label">
+              <input type="radio" id="value-1" onclick="clicked()" checked="" name="option" value="1"/>
+              <p class="text" id="opt1"></p>
+            </label>
+
+            <label class="label">
+              <input type="radio" id="value-2" onclick="clicked()" name="option" value="2" />
+              <p class="text" id="opt2"></p>
+            </label>
+
+            <label class="label">
+              <input type="radio" id="value-3" onclick="clicked()" name="option" value="3" />
+              <p class="text" id="opt3"></p>
+            </label>
+          </div>
+
+          <!-- <div class="child">
+            <input type="radio" onclick="clicked()" value="1" name="option" id="">
+            <label for="" id="opt1"></label>
+            <br>
+          </div>
+          <div class="child">
+            <input type="radio" onclick="clicked()" value="2" name="option" id="">
+            <label for="" id="opt2"></label>
+            <br>    
+          </div>
+          <div class="child">
+            <input type="radio" onclick="clicked()" value="3" name="option" id="">
+            <label for="" id="opt3"></label>
+            <br>
+          </div> -->
+
+
+        
+
+    </div>
+    <div class="child" style="margin-left: 120px; margin-top: 20px;">
+      <button class="learn-more"  onclick="next()" id="btnNext" disabled>
+        <span class="circle" aria-hidden="true">
+        <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Next</span>
+      </button>
+      <!-- <button onclick="next()" id="btnNext" disabled>Next</button> -->
+    </div>
+</div>
+
+<div id="resultPopup" class="popup">
+  <div class="popup-content">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2>Your Quiz Result</h2>
+      <div id="quizResult">You scored 8/10!</div>
+      <button onclick="closePopup()" class="buttons">Close</button>
+  </div>
+</div>
 
     <script src="app.js"></script>
 </body>
